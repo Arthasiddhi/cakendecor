@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="baker_account"/>
+    <body>
+        <referenceBlock name="head.components">
+            <block class="Magento\Framework\View\Element\Js\Components" name="baker_address_head_components" template="CND_Baker::js/components.phtml"/>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="CND\Baker\Block\Address\Book" name="address_book" template="CND_Baker::address/book.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

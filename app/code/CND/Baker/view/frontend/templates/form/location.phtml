@@ -1,0 +1,64 @@
+<?php
+
+/** @var \CND\HomeModue\Block\Baker $block */
+?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+
+
+
+    <div class="step">Step 1:Choose Location</div>
+    <div class="row">
+        <div class="col-md-6 text-center divpadding" >
+            <h3><b>Are you a baker looking for serving more customers?</b></h3>
+            <p class="form-control-static">Right now we are serving at the following locations near you.</p>
+            <form class="form create account form-create-account" action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>" method="post" id="form-validate" enctype="multipart/form-data" autocomplete="off"><form action="create">
+
+                <ul>
+                   <?php foreach ($block->getItems() as $item): ?>
+                    <li>
+                        <label class="Form-label--tick"> <div class="location">
+                                <input type="radio" value="<?php echo $item->getId();?>" name="SomeRadio" class="Form-label-radio">
+                                <span class="Form-label-text"> <?php echo $item->getName();?></span></div>
+                        </label>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+
+                <p class="form-control-static">If you are a baker serving at any of these locations, choose one and proceed with registration.</p>
+                <b><button type="submit" class=" button btn-block" >Continue</button></b>
+            </form>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCT6WyN9_7DwHswNq55qfKQiBTAaeAL4L8"></script>
+            <p>Click the button to get your coordinates.</p>
+
+            <button onclick="getLocation()"><i class="fa fa-map-marker" style="color:blueviolet;"></i> Locate Me!</button>
+            <i class="fas fa-map-marker-alt"></i>
+            <p id="demo"></p>
+
+
+        </div>
+        <!-- /.row -->
+
+        <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fgoogle.com&width=154&layout=button_count&action=like&size=large&show_faces=true&share=true&height=46&appId" width="154" height="46" style="border:none;overflow:hidden; margin-top: 20px;" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+
+    </div>
+    <!-- /.row -->
+
+
+</div>
+<!-- /.container -->
+
+
+<!-- jQuery Version 1.11.1 -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>

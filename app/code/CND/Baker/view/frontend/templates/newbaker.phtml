@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \CND\Baker\Block\Form\Login\Info $block */
+?>
+<?php if ($block->getRegistration()->isAllowed()): ?>
+<div class="block block-new-baker">
+    <div class="block-title">
+        <strong id="block-new-baker-heading" role="heading" aria-level="2"><?= $block->escapeHtml(__('New Bakers')) ?></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-new-baker-heading">
+        <p><?= $block->escapeHtml(__('If you are looking to grow your business in your locality. Go ahead and register your business with us. Already 100+ bakers are serving our customers in GTA.')) ?></p>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <a href="<?= $block->escapeUrl($block->getCreateAccountUrl()) ?>" class="action create primary"><span><?= $block->escapeHtml(__('Create an Account')) ?></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,145 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Vivek Ramasha
+ * Date: 15-06-2018
+ * Time: 02:35 PM
+ */
+?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<div class="container">
+    <div class="header-inverse ">
+        <a href="index.html" class="close w3-xxlarge" style="color:#fff;"><span class="fa fa-close"></span></a>
+        <h3><b>Get Started</b></h3>
+    </div>
+    <h1 style="padding-top:60px;">Lets know each other</h1>
+    <p>Tell us more about your business, how long you been doing it, your specialities to understand and help you get the customers you will love to serve</p>
+    <!-- /.row -->
+    <div class="box" style="border-color: skyblue;">
+        <form action="emailconformation.html" post="post">
+            <div class="form-group">
+                <label style="font-weight: normal; font-size: 16px;">Registered Business Name:</label>
+                <input type="text" style="width: 70vw;" class="form-control" name="bname" placeholder="Name of your actual business" />
+            </div>
+            <div class="form-group">
+                <label style="font-weight: normal;">Display name of your business:</label>
+                <p style="font-size: 12px; color: #a9a9a9">Please enter an alternate name for your business for this platform. It cannot be exactly same as your real business name.</p>
+                <input class="form-control" type="text" style="width: 70vw;" name="dname" placeholder="Business name in CakesNDecor">
+            </div>
+            <div class="form-group">
+                <label style="font-weight: normal;">Types of Business:</label>
+                <br>
+                <div style="font-size: 12px; color: #a9a9a9">Select the type of your business</div>
+                <br>
+                <div class="box-inside">
+                    <input type="radio" id="buss1" name="radio-group">
+                    <label for="buss1">Home baker(freelancer)</label>
+                </div>
+                <div class="box-inside">
+                    <input type="radio" id="buss2" name="radio-group">
+                    <label for="buss2">Established Store</label>
+                </div>
+                <div class="box-inside">
+                    <input type="radio" id="buss3" name="radio-group">
+                    <label for="buss3">Chain of Stores</label>
+                    <div style="font-size: 10px; font-style: italic; padding-left: 25px; color: #a9a9a9">If you have more than one branch</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label style="font-weight: normal;">Services Offered:</label>
+                <br>
+                <div style="font-size: 12px; color: #a9a9a9">Select the list of services you offer</div>
+                <br>
+                <div class="box-inside">
+                    <input type="checkbox" id="check1" class="Form-label-radio">
+                    <label for="check1" class="Form-label-text">Homemade Chocolates</label>
+                </div>
+                <div class="box-inside">
+                    <input type="checkbox" id="check2" class="Form-label-radio">
+                    <label for="check2" class="Form-label-text">Pastries</label>
+                </div>
+                </label>
+                <div class="box-inside">
+                    <input type="checkbox" id="check3" class="Form-label-radio">
+                    <label for="check3" class="Form-label-text">Custom made cakes</label>
+                    <div style="font-size: 10px; font-style: italic; padding-left: 25px; color: #a9a9a9">For wedding, birthdays, etc.</div>
+                </div>
+            </div>
+            <textarea placeholder="If there is anything else that you can offer or If you have specalities or unique offerings , let us know."></textarea>
+            <div class="form-group">
+                <label style="font-weight: normal;">Delivery Capability:</label>
+                <div class="box-inside">
+                    <input type="radio" id="del1" name="radio-group">
+                    <label for="del1">I can deliver my own orders</label>
+                </div>
+                <div class="box-inside">
+                    <input type="radio" id="del2" name="radio-group">
+                    <label for="del2">I need your support for delivery</label>
+                </div>
+                <textarea placeholder="Let us know your delivery limitations. How far can you deliver within GTA?"></textarea>
+                <div class="form-group">
+                    <label style="font-weight: normal;">Show us your work:</label>
+                    <div style="font-size: 12px; color: #a9a9a9">You can share the best of works. Images of cakes, cookies, pastries, etc., </div>
+                    <div class="box-inside" style="background-color: #E2E2E2;">
+                        <div style=" margin-left: 25vw;">
+                            <label for="files" class="btn btn-default">Upload photos</label>
+                            <input id="files" style="visibility:hidden;" type="file">
+                            <div style="font-size: 12px; color: #a9a9a9;">Upto 10 images</div>
+                        </div>
+                    </div>
+                    <p style="text-align: center;">OR</p>
+                    <i class="fa fa-file-image-o fa-2x" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <input type="text" name="piclink" placeholder="Link to your albums online.">
+                    <br>
+                    <label style="font-weight: normal;">Social Network Profiles:</label>
+                    <div style="font-size: 12px; color: #a9a9a9">To understand your reputation and the seniices you offer, share with us your social profile if you are having a bragging fans. This will expedite the approval process.</div>
+                    <i class="fa fa-facebook-official fa-2x" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <input type="text" name="piclink" placeholder="Facebook Page link.">
+                    <br>
+                    <i class="fa fa-twitter fa-2x" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <input type="text" name="piclink" placeholder="Twitter Handle.">
+                    <br>
+                    <i class="fa fa-google fa-2x" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <input type="text" name="piclink" placeholder="Google Business link.">
+                    <br>
+                    <i class="fa fa-instagram fa-2x" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <input type="text" name="piclink" placeholder="Instagram link.">
+                    <br>
+                    <i class="fa fa-yelp fa-2x" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <input type="text" name="piclink" placeholder="Yelp Review page link.">
+                    <br>
+                    <i class="fa fa-link fa-2x" aria-hidden="true" style="padding-right: 10px;"></i>
+                    <input type="text" name="piclink" placeholder="Any other link that you would like showcase.">
+                    <br>
+                    <hr class="hr2">
+                    <label style="font-weight: normal;">ID Proof:</label>
+                    <div style="font-size: 12px; color: #a9a9a9">Upload a piece of ID to verify and your business.
+                        <br>
+                        <br> Following are the accpeted IDs.
+                        <ol>
+                            <li>Business registration document</li>
+                            <li>Driving License</li>
+                            <li>Bank Statement</li>
+                        </ol>
+                    </div>
+                    <div class="box-inside" style="background-color: #E2E2E2; margin-bottom: 60px; margin-left: 20px;">
+                        <div style=" margin-left: 25vw;">
+                            <label for="files" class="btn btn-default">Upload ID</label>
+                            <input id="files" style="visibility:hidden;" type="file">
+                        </div>
+                    </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+<p style="text-align: center;">By proceeding to submit your details for verification you agree to
+    <br><a href="#" style="color: skyblue; text-decoration: underline;"> Terms and Conditions</a></p>
+<button type="submit" action="info1.html" class=" button btn-block" style="width: 50vw; margin-left:25vw; color: #fff; background-color: #717171; margin-top: 10px; margin-bottom: 50px;">Submit profile for Verification</button>
+<hr class="hr2">
+<div class="col-md-12">
+    <h4 class="text-center">Got any Questions?</h4>
+    <p class="form-control-static text-justify">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Integer posuere erata ante venenatis dapibus posuere velit aliquet. Maecenas faucibus modis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+</div>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page_types xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_types.xsd">
+    <type id="baker_account_confirmation" label="Baker Account Confirmation"/>
+    <type id="baker_account_create" label="Baker Account Registration Form"/>
+    <type id="baker_account_createpassword" label="Reset a Password"/>
+    <type id="baker_account_edit" label="Baker Account Edit Form"/>
+    <type id="baker_account_forgotpassword" label="Baker Forgot Password Form"/>
+    <type id="baker_account_index" label="Baker My Account Dashboard"/>
+    <type id="baker_account_login" label="Baker Account Login Form"/>
+    <type id="baker_account_logoutsuccess" label="Baker Account Logout Success"/>
+    <type id="baker_address_form" label="Baker My Account Address Edit Form"/>
+    <type id="baker_address_index" label="Baker My Account Address Book"/>
+</page_types>

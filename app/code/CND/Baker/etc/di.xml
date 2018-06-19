@@ -1,0 +1,462 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="CND\Baker\Api\AddressRepositoryInterface"
+                type="CND\Baker\Model\ResourceModel\AddressRepository" />
+    <preference for="CND\Baker\Api\LocationRepositoryInterface"
+                type="CND\Baker\Model\ResourceModel\LocationRepository" />
+    <preference for="CND\Baker\Api\ServiceRepositoryInterface"
+                type="CND\Baker\Model\ResourceModel\ServiceRepository" />
+    <preference for="CND\Baker\Api\BakerRepositoryInterface"
+                type="CND\Baker\Model\ResourceModel\BakerRepository" />
+    <preference for="CND\Baker\Api\GroupManagementInterface"
+                type="CND\Baker\Model\GroupManagement" />
+    <preference for="CND\Baker\Api\BakerGroupConfigInterface"
+                type="CND\Baker\Model\BakerGroupConfig" />
+    <preference for="CND\Baker\Api\GroupRepositoryInterface"
+                type="CND\Baker\Model\ResourceModel\GroupRepository" />
+    <preference for="CND\Baker\Api\Data\BakerInterface" type="CND\Baker\Model\Data\Baker" />
+    <preference for="CND\Baker\Api\Data\AddressInterface" type="CND\Baker\Model\Data\Address" />
+    <preference for="CND\Baker\Api\Data\LocationInterface" type="CND\Baker\Model\Data\Location" />
+    <preference for="CND\Baker\Api\Data\ServiceInterface" type="CND\Baker\Model\Data\Service" />
+    <preference for="CND\Baker\Api\Data\RegionInterface" type="CND\Baker\Model\Data\Region" />
+    <preference for="CND\Baker\Api\Data\AttributeMetadataInterface"
+                type="CND\Baker\Model\Data\AttributeMetadata" />
+    <preference for="CND\Baker\Api\Data\GroupInterface" type="CND\Baker\Model\Data\Group" />
+    <preference for="CND\Baker\Api\Data\OptionInterface" type="CND\Baker\Model\Data\Option" />
+    <preference for="CND\Baker\Api\Data\ValidationRuleInterface"
+                type="CND\Baker\Model\Data\ValidationRule" />
+    <preference for="CND\Baker\Api\Data\ValidationResultsInterface"
+                type="CND\Baker\Model\Data\ValidationResults" />
+    <preference for="CND\Baker\Api\Data\GroupSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="CND\Baker\Api\Data\BakerSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="CND\Baker\Api\Data\AddressSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="CND\Baker\Api\Data\LocationSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="CND\Baker\Api\Data\ServiceSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults" />
+    <preference for="CND\Baker\Api\AccountManagementInterface"
+                type="CND\Baker\Model\AccountManagement" />
+    <preference for="CND\Baker\Api\BakerMetadataInterface"
+                type="CND\Baker\Model\Metadata\BakerCachedMetadata" />
+    <preference for="CND\Baker\Api\AddressMetadataInterface"
+                type="CND\Baker\Model\Metadata\AddressCachedMetadata" />
+    <preference for="CND\Baker\Api\LocationMetadataInterface"
+                type="CND\Baker\Model\Metadata\LocationCachedMetadata" />
+    <preference for="CND\Baker\Api\ServiceMetadataInterface"
+                type="CND\Baker\Model\Metadata\ServiceCachedMetadata" />
+    <preference for="CND\Baker\Api\BakerMetadataManagementInterface"
+                type="CND\Baker\Model\Metadata\BakerMetadataManagement" />
+    <preference for="CND\Baker\Api\AddressMetadataManagementInterface"
+                type="CND\Baker\Model\Metadata\AddressMetadataManagement" />
+    <preference for="CND\Baker\Api\LocationsMetadataManagementInterface"
+                type="CND\Baker\Model\Metadata\LocationMetadataManagement" />
+    <preference for="CND\Baker\Api\ServiceMetadataManagementInterface"
+                type="CND\Baker\Model\Metadata\ServiceMetadataManagement" />
+    <preference for="CND\Baker\Api\BakerManagementInterface"
+                type="CND\Baker\Model\BakerManagement" />
+    <preference for="CND\Baker\Model\AuthenticationInterface"
+                type="CND\Baker\Model\Authentication" />
+    <preference for="CND\Baker\Model\EmailNotificationInterface"
+                type="CND\Baker\Model\EmailNotification" />
+    <preference for="CND\Baker\Api\BakerNameGenerationInterface"
+                type="CND\Baker\Helper\View" />
+    <preference for="CND\Baker\Model\Address\CustomAttributeListInterface"
+                type="CND\Baker\Model\Address\CustomAttributeList" />
+    <preference for="CND\Baker\Model\Location\CustomAttributeListInterface"
+                type="CND\Baker\Model\location\CustomAttributeList" />
+    <preference for="CND\Baker\Model\Service\CustomAttributeListInterface"
+                type="CND\Baker\Model\Service\CustomAttributeList" />
+    <preference for="CND\Baker\Model\Baker\Source\GroupSourceInterface"
+                type="CND\Baker\Model\Baker\Source\Group" />
+    <preference for="CND\Baker\Model\Baker\Attribute\Source\GroupSourceLoggedInOnlyInterface"
+                type="CND\Baker\Model\Baker\Attribute\Source\Group"/>
+    <preference for="CND\Baker\Block\Account\SortLinkInterface"
+                type="CND\Baker\Block\Account\SortLink"/>
+    <preference for="CND\Baker\Model\Group\RetrieverInterface"
+                type="CND\Baker\Model\Group\Retriever"/>
+    <type name="CND\Baker\Model\Session">
+        <arguments>
+            <argument name="configShare" xsi:type="object">CND\Baker\Model\Config\Share\Proxy</argument>
+            <argument name="bakerUrl" xsi:type="object">CND\Baker\Model\Url\Proxy</argument>
+            <argument name="bakerResource" xsi:type="object">CND\Baker\Model\ResourceModel\Baker\Proxy</argument>
+            <argument name="storage" xsi:type="object">CND\Baker\Model\Session\Storage</argument>
+            <argument name="bakerRepository" xsi:type="object">CND\Baker\Api\BakerRepositoryInterface\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Helper\Address">
+        <arguments>
+            <argument name="addressConfig" xsi:type="object">CND\Baker\Model\Address\Config\Proxy</argument>
+        </arguments>
+    </type>
+
+    <type name="CND\Baker\Model\Config\Share">
+        <arguments>
+            <argument name="bakerResource" xsi:type="object">CND\Baker\Model\ResourceModel\Baker\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Eav\Model\Entity\Setup\PropertyMapper\Composite">
+        <arguments>
+            <argument name="propertyMappers" xsi:type="array">
+                <item name="baker" xsi:type="string">CND\Baker\Model\ResourceModel\Setup\PropertyMapper</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Model\ActionValidator\RemoveAction">
+        <arguments>
+            <argument name="protectedModels" xsi:type="array">
+                <item name="baker" xsi:type="string">CND\Baker\Model\Baker</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Address">
+        <arguments>
+            <argument name="bakerRepository" xsi:type="object">CND\Baker\Api\BakerRepositoryInterface\Proxy</argument>
+            <argument name="entitySnapshot" xsi:type="object">BakerAddressSnapshot</argument>
+            <argument name="entityRelationComposite" xsi:type="object">BakerAddressRelationsComposite</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Location">
+        <arguments>
+            <argument name="bakerRepository" xsi:type="object">CND\Baker\Api\BakerRepositoryInterface\Proxy</argument>
+            <argument name="entitySnapshot" xsi:type="object">BakerLocationSnapshot</argument>
+            <argument name="entityRelationComposite" xsi:type="object">BakerLocationRelationsComposite</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Service">
+        <arguments>
+            <argument name="bakerRepository" xsi:type="object">CND\Baker\Api\BakerRepositoryInterface\Proxy</argument>
+            <argument name="entitySnapshot" xsi:type="object">BakerServiceSnapshot</argument>
+            <argument name="entityRelationComposite" xsi:type="object">BakerLocationRelationsComposite</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\Address\Config">
+        <arguments>
+            <argument name="reader" xsi:type="object">CND\Baker\Model\Address\Config\Reader\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\Visitor">
+        <arguments>
+            <argument name="ignoredUserAgents" xsi:type="array">
+                <item name="google1" xsi:type="string">Googlebot/1.0 (googlebot@googlebot.com http://googlebot.com/)</item>
+                <item name="google2" xsi:type="string">Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</item>
+                <item name="google3" xsi:type="string">Googlebot/2.1 (+http://www.googlebot.com/bot.html)</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Group" shared="false">
+        <arguments>
+            <argument name="groupManagement" xsi:type="object">CND\Baker\Api\GroupManagementInterface\Proxy</argument>
+        </arguments>
+    </type>
+    <virtualType name="SectionInvalidationConfigReader" type="Magento\Framework\Config\Reader\Filesystem">
+        <arguments>
+            <argument name="idAttributes" xsi:type="array">
+                <item name="/config/action" xsi:type="string">name</item>
+                <item name="/config/action/section" xsi:type="string">name</item>
+            </argument>
+            <argument name="fileName" xsi:type="string">sections.xml</argument>
+            <argument name="converter" xsi:type="object">\CND\Baker\BakerData\SectionConfigConverter</argument>
+            <argument name="schemaLocator" xsi:type="object">CND\Baker\BakerData\SchemaLocator</argument>
+            <argument name="defaultScope" xsi:type="string">frontend</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SectionInvalidationConfigData" type="Magento\Framework\Config\Data">
+        <arguments>
+            <argument name="reader" xsi:type="object">SectionInvalidationConfigReader</argument>
+            <argument name="cacheId" xsi:type="string">sections_invalidation_config</argument>
+        </arguments>
+    </virtualType>
+    <type name="CND\Baker\Block\SectionConfig">
+        <arguments>
+            <argument name="sectionConfig" xsi:type="object">SectionInvalidationConfigData</argument>
+        </arguments>
+    </type>
+    <preference for="CND\Baker\BakerData\JsLayoutDataProviderPoolInterface"
+                type="CND\Baker\BakerData\JsLayoutDataProviderPool"/>
+    <type name="Magento\Eav\Model\EavCustomAttributeTypeLocator">
+        <arguments>
+            <argument name="serviceEntityTypeMap" xsi:type="array">
+                <item name="CND\Baker\Api\Data\BakerInterface" xsi:type="const">CND\Baker\Api\BakerMetadataInterface::ENTITY_TYPE_CUSTOMER</item>
+            </argument>
+            <argument name="serviceBackendModelDataInterfaceMap" xsi:type="array">
+                <item name="CND\Baker\Api\Data\BakerInterface" xsi:type="array">
+                    <item name="Magento\Eav\Model\Attribute\Data\Image" xsi:type="string">Magento\Framework\Api\Data\ImageContentInterface</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="EavVersionControlSnapshot" type="Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot">
+        <arguments>
+            <argument name="metadata" xsi:type="object">Magento\Eav\Model\Entity\VersionControl\Metadata</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BakerAddressSnapshot" type="CND\Baker\Model\ResourceModel\Db\VersionControl\AddressSnapshot">
+        <arguments>
+            <argument name="metadata" xsi:type="object">Magento\Eav\Model\Entity\VersionControl\Metadata</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BakerRelationsComposite" type="Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite">
+        <arguments>
+            <argument name="relationProcessors" xsi:type="array">
+                <item name="default" xsi:type="object">CND\Baker\Model\ResourceModel\Baker\Relation</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BakerAddressRelationsComposite" type="Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite">
+        <arguments>
+            <argument name="relationProcessors" xsi:type="array">
+                <item name="default" xsi:type="object">CND\Baker\Model\ResourceModel\Address\Relation</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="CND\Baker\Model\ResourceModel\Baker">
+        <arguments>
+            <argument name="entitySnapshot" xsi:type="object">EavVersionControlSnapshot</argument>
+            <argument name="entityRelationComposite" xsi:type="object">BakerRelationsComposite</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Baker\Collection">
+        <arguments>
+            <argument name="entitySnapshot" xsi:type="object">EavVersionControlSnapshot</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Address\Collection">
+        <arguments>
+            <argument name="entitySnapshot" xsi:type="object">EavVersionControlSnapshot</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Location\Collection">
+        <arguments>
+            <argument name="entitySnapshot" xsi:type="object">EavVersionControlSnapshot</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Location\Collection">
+        <arguments>
+            <argument name="entitySnapshot" xsi:type="object">EavVersionControlSnapshot</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="baker_listing_data_source" xsi:type="string">CND\Baker\Model\ResourceModel\Grid\Collection</item>
+                <item name="baker_online_grid_data_source" xsi:type="string">CND\Baker\Model\ResourceModel\Online\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="BakerNameHandler" type="Magento\Framework\Indexer\Handler\ConcatHandler">
+        <arguments>
+            <argument name="concatExpression" xsi:type="object">BakerNameExpression</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ShippingAddressHandler" type="Magento\Framework\Indexer\Handler\ConcatHandler">
+        <arguments>
+            <argument name="concatExpression" xsi:type="object">ShippingAddressExpression</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BillingAddressHandler" type="Magento\Framework\Indexer\Handler\ConcatHandler">
+        <arguments>
+            <argument name="concatExpression" xsi:type="object">BillingAddressExpression</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BakerNameExpression" type="Magento\Framework\DB\Sql\ConcatExpression">
+        <arguments>
+            <argument name="tableName" xsi:type="string">e</argument>
+            <argument name="columns" xsi:type="array">
+                <item name="prefix" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">e</item>
+                    <item name="columnName" xsi:type="string">prefix</item>
+                </item>
+                <item name="firstname" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">e</item>
+                    <item name="columnName" xsi:type="string">firstname</item>
+                </item>
+                <item name="middlename" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">e</item>
+                    <item name="columnName" xsi:type="string">middlename</item>
+                </item>
+                <item name="lastname" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">e</item>
+                    <item name="columnName" xsi:type="string">lastname</item>
+                </item>
+                <item name="suffix" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">e</item>
+                    <item name="columnName" xsi:type="string">suffix</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ShippingAddressExpression" type="Magento\Framework\DB\Sql\ConcatExpression">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="prefix" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">shipping</item>
+                    <item name="columnName" xsi:type="string">street</item>
+                </item>
+                <item name="firstname" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">shipping</item>
+                    <item name="columnName" xsi:type="string">city</item>
+                </item>
+                <item name="middlename" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">shipping</item>
+                    <item name="columnName" xsi:type="string">region</item>
+                </item>
+                <item name="lastname" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">shipping</item>
+                    <item name="columnName" xsi:type="string">postcode</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="BillingAddressExpression" type="Magento\Framework\DB\Sql\ConcatExpression">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="prefix" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">billing</item>
+                    <item name="columnName" xsi:type="string">street</item>
+                </item>
+                <item name="firstname" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">billing</item>
+                    <item name="columnName" xsi:type="string">city</item>
+                </item>
+                <item name="middlename" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">billing</item>
+                    <item name="columnName" xsi:type="string">region</item>
+                </item>
+                <item name="lastname" xsi:type="array">
+                    <item name="tableAlias" xsi:type="string">billing</item>
+                    <item name="columnName" xsi:type="string">postcode</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="CND\Baker\Model\Indexer\AttributeProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">CND\Baker\Model\ResourceModel\Attribute\Collection</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\Indexer\Address\AttributeProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">CND\Baker\Model\ResourceModel\Address\Attribute\Collection</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\Online\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">baker_visitor</argument>
+            <argument name="resourceModel" xsi:type="string">CND\Baker\Model\ResourceModel\Visitor</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="upgradeHashAlgorithmCommand" xsi:type="object">CND\Baker\Console\Command\UpgradeHashAlgorithmCommand</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Api\BakerRepositoryInterface">
+        <plugin name="transactionWrapper" type="CND\Baker\Model\Plugin\BakerRepository\TransactionWrapper" sortOrder="-1"/>
+    </type>
+    <type name="Magento\Directory\Model\AllowedCountries">
+        <plugin name="bakerAllowedCountries" type="CND\Baker\Model\Plugin\AllowedCountries"/>
+    </type>
+    <type name="Magento\Framework\App\Action\AbstractAction">
+        <plugin name="bakerNotification" type="CND\Baker\Model\Plugin\BakerNotification"/>
+    </type>
+    <type name="Magento\PageCache\Observer\FlushFormKey">
+        <plugin name="bakerFlushFormKey" type="CND\Baker\Model\Plugin\BakerFlushFormKey"/>
+    </type>
+    <type name="CND\Baker\Model\Baker\NotificationStorage">
+        <arguments>
+            <argument name="cache" xsi:type="object">CND\Baker\Model\Cache\Type\Notification</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\BakerRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor</argument>
+        </arguments>
+    </type>
+    <!-- @api -->
+    <virtualType name="CND\Baker\Model\Api\SearchCriteria\CollectionProcessor\GroupFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="fieldMapping" xsi:type="array">
+                <item name="code" xsi:type="string">baker_group_code</item>
+                <item name="id" xsi:type="string">baker_group_id</item>
+                <item name="tax_class_name" xsi:type="string">class_name</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- @api -->
+    <virtualType name="CND\Baker\Model\Api\SearchCriteria\CollectionProcessor\GroupSortingProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor">
+        <arguments>
+            <argument name="fieldMapping" xsi:type="array">
+                <item name="code" xsi:type="string">baker_group_code</item>
+                <item name="id" xsi:type="string">baker_group_id</item>
+                <item name="tax_class_name" xsi:type="string">class_name</item>
+            </argument>
+            <argument name="defaultOrders" xsi:type="array">
+                <item name="id" xsi:type="string">ASC</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- @api -->
+    <virtualType name="CND\Baker\Model\Api\SearchCriteria\GroupCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">CND\Baker\Model\Api\SearchCriteria\CollectionProcessor\GroupFilterProcessor</item>
+                <item name="sorting" xsi:type="object">CND\Baker\Model\Api\SearchCriteria\CollectionProcessor\GroupSortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="CND\Baker\Model\ResourceModel\GroupRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">CND\Baker\Model\Api\SearchCriteria\GroupCollectionProcessor</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\ResourceModel\AddressRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor</argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\Attribute">
+        <arguments>
+            <argument name="attributeMetadataCache" xsi:type="object">CND\Baker\Model\Metadata\AttributeMetadataCache\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="CND\Baker\Api\Data\BakerInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">baker_entity</item>
+                    <item name="eavEntityType" xsi:type="string">baker</item>
+                    <item name="identifierField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Ui\Component\MassAction\Group\Options">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="urlPath" xsi:type="string">baker/index/massAssignGroup</item>
+                <item name="paramName" xsi:type="string">group</item>
+                <item name="confirm" xsi:type="array">
+                    <item name="title" xsi:type="string" translatable="true">Assign a Baker Group</item>
+                    <item name="message" xsi:type="string" translatable="true">Are you sure to assign selected bakers to new group?</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Model\AccountManagement">
+        <arguments>
+            <argument name="sessionManager" xsi:type="object">Magento\Framework\Session\SessionManagerInterface\Proxy</argument>
+        </arguments>
+    </type>
+</config>

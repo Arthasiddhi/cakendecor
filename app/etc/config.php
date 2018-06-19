@@ -4,6 +4,8 @@ return [
     'Magento_Store' => 1,
     'Magento_Directory' => 1,
     'Magento_Eav' => 1,
+    'CND_Baker' => 1,
+    'CND_HomeModule' => 1,
     'Magento_Backend' => 1,
     'Magento_Theme' => 1,
     'Magento_Customer' => 1,
@@ -123,6 +125,7 @@ return [
     'Magento_CatalogWidget' => 1,
     'Dotdigitalgroup_Email' => 1,
     'Magento_WishlistAnalytics' => 1,
+    'Mastering_SampleModule' => 1,
     'Shopial_Facebook' => 1,
     'Temando_Shipping' => 1,
     'Vertex_Tax' => 1

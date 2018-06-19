@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="CND_Baker::baker" title="Bakers" translate="title" sortOrder="40">
+                    <resource id="CND_Baker::manage" title="All Bakers" translate="title" sortOrder="10" />
+                    <resource id="CND_Baker::online" title="Now Online" translate="title" sortOrder="20" />
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="CND_Baker::config_baker" title="Bakers Section" translate="title" sortOrder="50" />
+                        </resource>
+                    </resource>
+                    <resource id="Magento_Backend::stores_other_settings">
+                        <resource id="CND_Baker::group" title="Baker Groups" translate="title" sortOrder="10" />
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

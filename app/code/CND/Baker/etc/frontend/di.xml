@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Url\SecurityInfo">
+        <arguments>
+            <argument name="secureUrlList" xsi:type="array">
+                <item name="baker" xsi:type="string">/baker/</item>
+            </argument>
+            <argument name="excludedUrlList" xsi:type="array">
+                <item name="baker_sections" xsi:type="string">/baker/section/load</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Layout">
+        <plugin name="baker-session-depersonalize"
+                type="CND\Baker\Model\Layout\DepersonalizePlugin" sortOrder="10"/>
+    </type>
+    <type name="Magento\Framework\App\Action\AbstractAction">
+        <plugin name="baker-app-action-dispatchController-context-plugin"
+                type="CND\Baker\Model\App\Action\ContextPlugin" sortOrder="10"/>
+    </type>
+    <preference for="CND\Baker\BakerData\SectionPoolInterface"
+                type="CND\Baker\BakerData\SectionPool"/>
+    <type name="CND\Baker\BakerData\SectionPoolInterface">
+        <arguments>
+            <argument name="sectionSourceMap" xsi:type="array">
+                <item name="baker" xsi:type="string">CND\Baker\BakerData\Baker</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Controller\Plugin\Account">
+        <arguments>
+            <argument name="allowedActions" xsi:type="array">
+                <item name="create" xsi:type="string">create</item>
+                <item name="login" xsi:type="string">login</item>
+                <item name="logoutsuccess" xsi:type="string">logoutsuccess</item>
+                <item name="forgotpassword" xsi:type="string">forgotpassword</item>
+                <item name="forgotpasswordpost" xsi:type="string">forgotpasswordpost</item>
+                <item name="resetpassword" xsi:type="string">resetpassword</item>
+                <item name="resetpasswordpost" xsi:type="string">resetpasswordpost</item>
+                <item name="confirm" xsi:type="string">confirm</item>
+                <item name="confirmation" xsi:type="string">confirmation</item>
+                <item name="createpassword" xsi:type="string">createpassword</item>
+                <item name="createpost" xsi:type="string">createpost</item>
+                <item name="loginpost" xsi:type="string">loginpost</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Controller\AbstractAccount">
+        <plugin name="baker_account" type="CND\Baker\Controller\Plugin\Account" />
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Sidebar">
+        <plugin name="baker_cart" type="CND\Baker\Model\Cart\ConfigPlugin" />
+    </type>
+    <type name="Magento\Framework\Session\SessionManager">
+        <plugin name="session_checker" type="CND\Baker\BakerData\Plugin\SessionChecker" />
+    </type>
+    <type name="Magento\Authorization\Model\CompositeUserContext">
+        <arguments>
+            <argument name="userContexts" xsi:type="array">
+                <item name="bakerSessionUserContext" xsi:type="array">
+                    <item name="type" xsi:type="object">CND\Baker\Model\Authorization\BakerSessionUserContext</item>
+                    <item name="sortOrder" xsi:type="string">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CND\Baker\Block\BakerData">
+        <arguments>
+            <argument name="expirableSectionNames" xsi:type="array">
+                <item name="cart" xsi:type="string">cart</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

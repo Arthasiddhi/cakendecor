@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Baker Group -->
+    <route url="/V1/bakerGroups/:id" method="GET">
+        <service class="CND\Baker\Api\GroupRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+    <route url="/V1/bakerGroups/default/:storeId" method="GET">
+        <service class="CND\Baker\Api\GroupManagementInterface" method="getDefaultGroup"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+    <route url="/V1/bakerGroups/default" method="GET">
+        <service class="CND\Baker\Api\GroupManagementInterface" method="getDefaultGroup"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+    <route url="/V1/bakerGroups/default/:id" method="PUT">
+        <service class="CND\Baker\Api\BakerGroupConfigInterface" method="setDefaultBakerGroup"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+    <route url="/V1/bakerGroups/:id/permissions" method="GET">
+        <service class="CND\Baker\Api\GroupManagementInterface" method="isReadonly"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+    <route url="/V1/bakerGroups/search" method="GET">
+        <service class="CND\Baker\Api\GroupRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+    <route url="/V1/bakerGroups" method="POST">
+        <service class="CND\Baker\Api\GroupRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+    <route url="/V1/bakerGroups/:id" method="PUT">
+        <service class="CND\Baker\Api\GroupRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+    <route url="/V1/bakerGroups/:id" method="DELETE">
+        <service class="CND\Baker\Api\GroupRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="CND_Baker::group"/>
+        </resources>
+    </route>
+
+    <!-- Baker Metadata -->
+    <route url="/V1/attributeMetadata/baker/attribute/:attributeCode" method="GET">
+        <service class="CND\Baker\Api\BakerMetadataInterface" method="getAttributeMetadata"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/attributeMetadata/baker/form/:formCode" method="GET">
+        <service class="CND\Baker\Api\BakerMetadataInterface" method="getAttributes"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/attributeMetadata/baker" method="GET">
+        <service class="CND\Baker\Api\BakerMetadataInterface" method="getAllAttributesMetadata"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/attributeMetadata/baker/custom" method="GET">
+        <service class="CND\Baker\Api\BakerMetadataInterface" method="getCustomAttributesMetadata"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+
+    <!-- Baker Address Metadata -->
+    <route url="/V1/attributeMetadata/bakerAddress/attribute/:attributeCode" method="GET">
+        <service class="CND\Baker\Api\AddressMetadataInterface" method="getAttributeMetadata"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/attributeMetadata/bakerAddress/form/:formCode" method="GET">
+        <service class="CND\Baker\Api\AddressMetadataInterface" method="getAttributes"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/attributeMetadata/bakerAddress" method="GET">
+        <service class="CND\Baker\Api\AddressMetadataInterface" method="getAllAttributesMetadata"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/attributeMetadata/bakerAddress/custom" method="GET">
+        <service class="CND\Baker\Api\AddressMetadataInterface" method="getCustomAttributesMetadata"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+
+    <!-- Baker Account -->
+    <route url="/V1/bakers/:bakerId" method="GET">
+        <service class="CND\Baker\Api\BakerRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers" method="POST">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="createAccount"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/:bakerId" method="PUT">
+        <service class="CND\Baker\Api\BakerRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/me" method="PUT">
+        <service class="CND\Baker\Api\BakerRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="baker.id" force="true">%baker_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/bakers/me" method="GET">
+        <service class="CND\Baker\Api\BakerRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="bakerId" force="true">%baker_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/bakers/me/activate" method="PUT">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="activateById"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="bakerId" force="true">%baker_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/bakers/search" method="GET">
+        <service class="CND\Baker\Api\BakerRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/:email/activate" method="PUT">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="activate"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/me/password" method="PUT">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="changePasswordById"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="bakerId" force="true">%baker_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/bakers/:bakerId/password/resetLinkToken/:resetPasswordLinkToken" method="GET">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="validateResetPasswordLinkToken"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/password" method="PUT">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="initiatePasswordReset"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/resetPassword" method="POST">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="resetPassword"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/:bakerId/confirm" method="GET">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="getConfirmationStatus"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/confirm" method="POST">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="resendConfirmation"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/validate" method="PUT">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="validate"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/:bakerId/permissions/readonly" method="GET">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="isReadonly"/>
+        <resources>
+            <resource ref="CND_Baker::baker"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/:bakerId" method="DELETE">
+        <service class="CND\Baker\Api\BakerRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/isEmailAvailable" method="POST">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="isEmailAvailable"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <!-- Baker Addresses -->
+    <route url="/V1/bakers/addresses/:addressId" method="GET">
+        <service class="CND\Baker\Api\AddressRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/me/billingAddress" method="GET">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="getDefaultBillingAddress"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="bakerId" force="true">%baker_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/bakers/:bakerId/billingAddress" method="GET">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="getDefaultBillingAddress"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/bakers/me/shippingAddress" method="GET">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="getDefaultShippingAddress"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+        <data>
+            <parameter name="bakerId" force="true">%baker_id%</parameter>
+        </data>
+    </route>
+    <route url="/V1/bakers/:bakerId/shippingAddress" method="GET">
+        <service class="CND\Baker\Api\AccountManagementInterface" method="getDefaultShippingAddress"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+    <route url="/V1/addresses/:addressId" method="DELETE">
+        <service class="CND\Baker\Api\AddressRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="CND_Baker::manage"/>
+        </resources>
+    </route>
+</routes>

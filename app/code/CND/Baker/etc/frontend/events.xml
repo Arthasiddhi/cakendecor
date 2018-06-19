@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch">
+        <observer name="baker_visitor" instance="CND\Baker\Observer\Visitor\InitByRequestObserver" />
+    </event>
+    <event name="controller_action_postdispatch">
+        <observer name="baker_visitor" instance="CND\Baker\Observer\Visitor\SaveByRequestObserver" />
+    </event>
+    <event name="baker_data_object_login">
+        <observer name="baker_visitor" instance="CND\Baker\Observer\Visitor\BindBakerLoginObserver" />
+    </event>
+    <event name="baker_logout">
+        <observer name="baker_visitor" instance="CND\Baker\Observer\Visitor\BindBakerLogoutObserver" />
+        <observer name="baker_log_logout" instance="CND\Baker\Observer\LogLastLogoutAtObserver" />
+    </event>
+    <event name="checkout_quote_destroy">
+        <observer name="baker_visitor" instance="CND\Baker\Observer\Visitor\BindQuoteDestroyObserver" />
+    </event>
+    <event name="baker_login">
+        <observer name="baker_log_login" instance="CND\Baker\Observer\LogLastLoginAtObserver" />
+    </event>
+    <event name="baker_baker_authenticated">
+        <observer name="baker_password" instance="CND\Baker\Observer\UpgradeBakerPasswordObserver" />
+        <observer name="baker_unlock" instance="CND\Baker\Observer\BakerLoginSuccessObserver" />
+    </event>
+</config>

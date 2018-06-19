@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="CND_Baker::baker" title="Bakers" translate="title" module="CND_Baker" sortOrder="30" resource="CND_Baker::baker"/>
+        <add id="CND_Baker::baker_manage" title="All Bakers" translate="title" module="CND_Baker" sortOrder="10" parent="CND_Baker::baker" action="baker/index/" resource="CND_Baker::manage"/>
+        <add id="CND_Baker::baker_online" title="Now Online" translate="title" module="CND_Baker" sortOrder="30" parent="CND_Baker::baker" action="baker/online/" resource="CND_Baker::online"/>
+        <add id="CND_Baker::baker_group" title="Baker Groups" translate="title" module="CND_Baker" sortOrder="50" parent="CND_Baker::baker" action="baker/group" resource="CND_Baker::group"/>
+    </menu>
+</config>

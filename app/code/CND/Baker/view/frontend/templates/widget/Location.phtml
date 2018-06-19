@@ -1,0 +1,29 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \CND\Baker\Block\Widget\Location $block */
+?>
+<div class="field Location <?= $block->isRequired() ? 'required' : '' ?>">
+    <label for="Location" class="label">
+        <span>
+            <?= $block->escapeHtml(__('Location')) ?>
+        </span>
+    </label>
+    <div class="control">
+        <?php
+
+        ?>
+        <input type="radio"
+               name="Location"
+               id="Location"
+               value="<?= $block->escapeHtmlAttr($block->getName()) ?>"
+               title="<?= $block->escapeHtmlAttr(__('Name')) ?>"
+               class="input-radio"
+         >
+    </div>
+</div>
